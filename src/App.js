@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Router, Link } from "@reach/router"
+import CreateContact from "./CreateContact"
+import Contacts from './Contacts'
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const ContactsPage = () => (
+  <div>
+    <Contacts />
+  </div>
+)
 
-export default App;
+const CreateContactsPage = () => (
+  <div>
+    <CreateContact />
+  </div>
+)
+
+export default () => (
+  <>
+  <nav>
+    <Link to='/'>Home</Link>{' '}
+    <Link to='/new'>New User</Link>
+  </nav>
+    <Router>
+      <ContactsPage path="/" />
+      <CreateContactsPage path='/new' />
+    </Router>
+  </>
+)

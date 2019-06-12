@@ -1,14 +1,16 @@
 import React from "react"
+import { navigate } from "@reach/router"
 import Form from "./Form"
 
 export default () => {
   return (
-    <Form onCreate={(contact) => {
+    <Form onCreate={async (contact) => {
         console.log(contact)
-        fetch("http://localhost:3000",{
+        await fetch("http://localhost:3000",{
             method: "POST", 
             body: JSON.stringify(contact)
         })
+        navigate('/')
     }} />
       
   )

@@ -6,7 +6,7 @@ export default () => {
   return (
     <Form onCreate={async (contact) => {
         console.log(contact)
-        await fetch("http://localhost:3000",{
+        await fetch("https://guarded-hamlet-40615.herokuapp.com/",{
             method: "POST", 
             body: JSON.stringify(contact)
         })

@@ -3,7 +3,7 @@ import { navigate } from '@reach/router'
 import Form from './Form'
 
 const getContact = async id =>
-  fetch('http://localhost:3000/' + id, {
+  fetch('https://guarded-hamlet-40615.herokuapp.com/' + id, {
     method: 'GET',
   }).then(res => res.json())
 
@@ -26,7 +26,7 @@ export default props => {
     <Form
     editContact={{firstName, lastName, emailAddress}}  
     onCreate={async contact => {
-        await fetch('http://localhost:3000/' + props.id, {
+        await fetch('https://guarded-hamlet-40615.herokuapp.com/' + props.id, {
           method: 'PUT',
           body: JSON.stringify(contact)
         })

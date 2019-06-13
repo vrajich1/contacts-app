@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { navigate } from '@reach/router'
 
-const getContacts = async () => fetch('http://localhost:3000').then(res => res.json())
+const getContacts = async () => fetch('https://guarded-hamlet-40615.herokuapp.com/').then(res => res.json())
 
 const deleteContact = async id =>
-  fetch('http://localhost:3000/' + id, {
+  fetch('https://guarded-hamlet-40615.herokuapp.com/' + id, {
     method: 'DELETE',
   }).then(res => res.json())
 

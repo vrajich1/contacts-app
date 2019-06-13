@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { navigate, Link } from '@reach/router'
+import { navigate } from '@reach/router'
 
 const getContacts = async () => fetch('http://localhost:3000').then(res => res.json())
 

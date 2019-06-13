@@ -9,20 +9,26 @@ const getContact = async id =>
 
 
 export default props => {
-  const [contact, setContact] = useState({})
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [emailAddress, setEmailAddress] = useState('')
 
   useEffect(() => {
-    getContact(props.id).then(contact => setContact(contact))
+    getContact(props.id).then(contact => {
+      setFirstName(contact.firstName)
+      setLastName(contact.lastName)
+      setEmailAddress(contact.emailAddress)
+    })
   }, [props.id])
+
 
   return (
     <Form
-      editContact={contact}
-      onCreate={async contact => {
-        console.log(contact)
-        await fetch('http://localhost:3000', {
+    editContact={{firstName, lastName, emailAddress}}  
+    onCreate={async contact => {
+        await fetch('http://localhost:3000/' + props.id, {
           method: 'PUT',
-          body: JSON.stringify(contact),
+          body: JSON.stringify(contact)
         })
         navigate('/')
       }}

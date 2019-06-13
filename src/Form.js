@@ -7,18 +7,22 @@ export default ({ editContact, onCreate }) => {
 
   useEffect(() => {
     if (editContact) {
-      setFirstName(editContact.firstName)
-      setLastName(editContact.lastName)
-      setEmailAddress(editContact.email)
+      if (editContact.firstName) {
+      setFirstName(editContact.firstName)}
+      if (editContact.lastName) {
+      setLastName(editContact.lastName)}
+      if (editContact.emailAddress) {
+      setEmailAddress(editContact.emailAddress)
+      }
     }
-  })
+  }, [editContact])
 
   return (
     <>
       <form
         onSubmit={e => {
           e.preventDefault()
-          onCreate({ firstName, lastName })
+          onCreate({ firstName, lastName, emailAddress })
         }}
       >
         <div className="row">
@@ -34,7 +38,7 @@ export default ({ editContact, onCreate }) => {
         <div className="row">
           <div className="col">
             <label htmlFor="EmailAddress">Email Address</label>
-            <input type="text" className="form-control" placeholder="Email Address" value={emailAddress} onChange={e => setEmailAddress(e.target.value)} />
+            <input type="email" className="form-control" placeholder="Email Address" value={emailAddress} onChange={e => setEmailAddress(e.target.value)} />
           </div>
         </div>
         <div className="row col">
